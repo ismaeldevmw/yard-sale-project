@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    :root {
+      --black: #000000;
+      --dark: #232830;
+      --white: #FFFFFF;
+      --very-light-pink: #C7C7C7;
+      --text-input-field: #F7F7F7;
+      --hospital-green: #ACD9B2;
+      --sm: 14px;
+      --md: 16px;
+      --lg: 18px;
+    }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      font-size: var(--md);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2em;
+      border-bottom: 1px solid var(--very-light-pink);
+    }
+    .close {
+      display: none;
+    }
+    .menu {
+      display: none;
+    }
+    .navbar__toggle {
+      width: 25px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .navbar__checkbox {
+      display: none;
+    }
+    .navbar__checkbox:checked ~ ul.navbar__menu li {
+      display: block;
+    }
+    .navbar__checkbox:checked ~ label.navbar__label .close {
+      display: block;
+    }
+    .navbar__checkbox:checked ~ label.navbar__label .menu {
+      display: none;
+    }
+    .logo {
+      width: 100px;
+    }
+    .navbar-left {
+      display: flex;
+    }
+    .navbar-left ul {
+      margin-left: .75em;
+    }
+    .navbar-left ul,
+    .navbar-right ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 60px;
+
+    }
+    .navbar-left a,
+    .navbar-right a {
+      text-decoration: none;
+      color: var(--very-light-pink);
+      border: 1px solid var(--white);
+      padding: .5em;
+      border-radius: .5em;
+    }
+    .navbar-left a:hover,
+    .navbar-right a:hover {
+      border: 1px solid var(--hospital-green);
+      color: var(--hospital-green);
+    }
+    .navbar-email {
+      color: var(--very-light-pink);
+      font-size: var(--sm);
+      margin-right: .75em;
+    }
+    .navbar-shopping-cart {
+      position: relative;
+    }
+    .navbar-shopping-cart div { 
+      width: 1em;
+      height: 1em;
+      background-color: var(--hospital-green);
+      border-radius: 50%;
+      font-size: var(--sm);
+      font-weight: bold;
+      position: absolute;
+      top: -6px;
+      right: -3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mobile-menu {
+      display: none;
+    }
+    .hide {
+      visibility: hidden;
+    }
+
+    .reveal {
+      visibility: visible;
+    }
+    @media (max-width: 640px) {
+      .menu {
+        display: block;
+      }
+      .navbar-left ul {
+        display: none;
+      }
+      .navbar-email {
+        display: none;
+      }
+      .navbar__toggle {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    
+    <div class="navbar__toggle">
+      <input type="checkbox" name="" id="navbar__checkbox" class="navbar__checkbox" />
+      <label for="navbar__checkbox" class="navbar__label">
+        <!-- SVG Menu -->
+        <img src="/icons/icon_menu.svg" alt="menu" class="menu">
+  
+        <!-- SVG Close -->
+        <img src="/icons/icon_close.png" alt="close menu" class="close">
+      </label>
+    </div>
+
+    <div class="navbar-left">
+      <img src="/logos/logo_yard_sale.svg" alt="logo" class="logo">
+      <ul>
+        <li><a href="/">All</a></li>
+        <li><a href="/">Clothes</a></li>
+        <li><a href="/">Furnitures</a></li>
+        <li><a href="/">Toys</a></li>
+        <li><a href="/">Others</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">me@example.com</li>
+        <li class="navbar-shopping-cart">
+          <img src="/icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+  <div class="mobile-menu hide" id="menu-mobile">
+    <ul>
+      <li>
+        <a href="/">CATEGORIES</a>
+      </li>
+      <li>
+        <a href="/">All</a>
+      </li>
+      <li>
+        <a href="/">Clothes</a>
+      </li>
+      <li>
+        <a href="/">Electronics</a>
+      </li>
+      <li>
+        <a href="/">Furnitures</a>
+      </li>
+      <li>
+        <a href="/">Toys</a>
+      </li>
+      <li>
+        <a href="/">Others</a>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <a href="/">My orders</a>
+      </li>
+      <li>
+        <a href="/">My account</a>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <a href="/" class="email">email@example.com</a>
+      </li>
+      <li>
+        <a href="/" class="sign-out">Sign out</a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script>
+  let checkbox = document.getElementById('navbar__checkbox');
+  let menuMobile = document.getElementById('menu-mobile');
+  
+  checkbox.addEventListener('click',() => {
+    menuMobile.classList.toggle('reveal');
+  });
+  
+</script>
+</html>
